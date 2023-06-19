@@ -1,17 +1,30 @@
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import AppointmentOption from './AppointmentOption';
+import Modal from '../Modal/Modal';
 
 
-const AvailableAppointment = ({selectedDate}) => {
+const AvailableAppointment = ({ selectedDate }) => {
 
     const [appointmentOptions, setAppointmentOptions] = useState([])
+    const [treatment, setTreatment] = useState(null)
 
-    useEffect(()=>{
+
+    const [showModal, setShowModal] = useState(false)
+    const [activeId, setActiveId] = useState(null)
+
+
+    const showModalHandle = (id) => {
+        setShowModal(true)
+        setActiveId(id)
+    }
+
+
+    useEffect(() => {
         fetch('AppointmentOption.json')
-       .then(res=> res.json())
-       .then(data => setAppointmentOptions(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setAppointmentOptions(data))
+    }, [])
 
     return (
         <div>
@@ -22,10 +35,18 @@ const AvailableAppointment = ({selectedDate}) => {
                     appointmentOptions?.map(option => <AppointmentOption
                         key={option._id}
                         appointmentOption={option}
-                        // setTreatment={setTreatment}
+                        setTreatment={setTreatment}
+                        showModalHandle={showModalHandle}
                     ></AppointmentOption>)
                 }
             </div>
+            {showModal && <Modal 
+            appointmentOptions={appointmentOptions} 
+            setShowModal={setShowModal} 
+            activeId={activeId}
+            selectedDate={selectedDate}
+             ></Modal>
+            }
         </div>
     );
 };
