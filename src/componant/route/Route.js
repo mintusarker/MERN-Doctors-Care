@@ -3,7 +3,7 @@ import Main from "../layout/Main";
 import Home from "../home/Home";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
-import Appointment from "../Appointment/Appointment";
+import Appointment from "../Appointment/Appoinment/Appointment";
 
 const router = createBrowserRouter([
     {
