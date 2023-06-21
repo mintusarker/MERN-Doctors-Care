@@ -9,7 +9,6 @@ const AvailableAppointment = ({ selectedDate }) => {
     const [appointmentOptions, setAppointmentOptions] = useState([])
     const [treatment, setTreatment] = useState(null)
 
-
     const [showModal, setShowModal] = useState(false)
     const [activeId, setActiveId] = useState(null)
 
@@ -40,12 +39,12 @@ const AvailableAppointment = ({ selectedDate }) => {
                     ></AppointmentOption>)
                 }
             </div>
-            {showModal && <Modal 
-            appointmentOptions={appointmentOptions} 
-            setShowModal={setShowModal} 
-            activeId={activeId}
-            selectedDate={selectedDate}
-             ></Modal>
+            {showModal && <Modal
+                appointmentOptions={appointmentOptions}
+                setShowModal={setShowModal}
+                activeId={activeId}
+                selectedDate={selectedDate}
+            ></Modal>
             }
         </div>
     );

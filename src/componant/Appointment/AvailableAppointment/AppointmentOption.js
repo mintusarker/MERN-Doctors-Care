@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppointmentOption = ({ appointmentOption , setTreatment, showModalHandle}) => {
+const AppointmentOption = ({ appointmentOption, showModalHandle }) => {
     const { name, slots, price, _id } = appointmentOption;
     // console.log(slots[0]);
     return (
@@ -22,7 +22,7 @@ const AppointmentOption = ({ appointmentOption , setTreatment, showModalHandle})
 
                 </div>
             </div>
-            
+
         </div>
     );
 };
