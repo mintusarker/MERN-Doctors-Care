@@ -32,7 +32,7 @@ const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate }) => 
         <div className='w-full h-full fixed top-0 left-0 z-20'>
             <div className='max-w-[600px] absolute top-1/2 left-1/2 z-30 bg-zinc-600 rounded-md transform -translate-x-1/2 -translate-y-1/2 p-3 lg:w-[450px] md:w-[450px] sm:w-[450px] w-[400px]'>
                 <h3 className="text-3xl text-center font-bold text-white mt-3">{name}</h3>
-                <button onClick={() => setShowModal(false)} className="btn btn-sm btn-circle btn-ghost bg-white hover:text-white text-xl absolute right-2 top-2">✕</button>
+                <button onClick={() => setShowModal(false)} className="btn btn-sm btn-circle btn-ghost pb-4 bg-white hover:text-white text-xl absolute right-2 top-2">✕</button>
                 <form onSubmit={handleBooking} className="p-8">
 
                     <input type="text" disabled value={date} className="input input-bordered w-full my-3" />
