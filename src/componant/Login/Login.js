@@ -1,18 +1,46 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const [error, setError] = useState(null);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [error, setError] = useState('');
+
+    const { userLogin, googleLogin } = useContext(AuthContext)
+    const provider = new GoogleAuthProvider();
+
 
     const handleLogin = (data) => {
-        console.log(data);
+        setError('');
+        userLogin(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success(`User login successfully`)
+                reset()
+            })
+            .catch(err => {
+                console.log(err.message)
+                setError(err.message)
+            })
+
     }
 
 
     const handleGoogleSignIn = () => {
-
+        googleLogin(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success(`User login successfully`)
+            })
+            .catch(err => {
+                console.log(err.message);
+                setError(err.message)
+            })
     }
 
 
@@ -23,7 +51,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <label className='label'><span className='label-text'>Email</span></label>
                     <input type='email' name='name' className='input border border-gray-400 w-full'{...register("email", { required: 'Email Address is required' })} />
-                   
+
                     {errors.email && <p className='text-red-600' role="alert">{errors.email?.message}</p>}
                     <label className='label'><span
                         className='label-text'>Password</span></label>
@@ -33,11 +61,12 @@ const Login = () => {
                     })} />
                     {errors.password && <p className='text-red-600' role="alert">{errors.password?.message}</p>}
 
+                    {error && <p className='text-red-600'>{error}</p>}
                     <input className='btn btn-accent my-3 w-full' value='Login' type="submit" />
-                    <p className='font-semibold text-center'>New to here ?<Link to='/signup' className='text-secondary border-b-2 ml-6 border-green-500'>Create new account</Link> </p>
-                    <div className="divider">OR</div>
-                    <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                 </form>
+                <p className='font-semibold text-center'>New to here ?<Link to='/signup' className='text-secondary border-b-2 ml-6 border-green-500'>Create new account</Link> </p>
+                <div className="divider">OR</div>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
