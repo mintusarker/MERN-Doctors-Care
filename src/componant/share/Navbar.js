@@ -17,11 +17,11 @@ const Navbar = () => {
         <li><Link to='/appointment'>Appointment</Link></li>
         {/* <li><Link to='/about'>About</Link></li> */}
         <li><Link to='/signup'>SignUp</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
 
         {user?.uid ?
             <>
                 <li onClick={handleLogout}><Link>Logout</Link></li>
-                <li><Link to='/dashboard'>Dashboard</Link></li>
             </>
 
             :

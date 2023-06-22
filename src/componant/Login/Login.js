@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
@@ -9,9 +9,14 @@ const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [error, setError] = useState('');
 
-    const { userLogin, googleLogin } = useContext(AuthContext)
+    const { userLogin, googleLogin, loading } = useContext(AuthContext)
     const provider = new GoogleAuthProvider();
 
+    const location = useLocation();
+    const navigate = useNavigate()
+
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = (data) => {
         setError('');
@@ -19,8 +24,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success(`User login successfully`)
-                reset()
+                toast.success(`User login successfully`);
+                navigate(from, { replace: true });
+                reset();
             })
             .catch(err => {
                 console.log(err.message)
@@ -42,7 +48,7 @@ const Login = () => {
                 setError(err.message)
             })
     }
-
+    
 
     return (
         <div className="h-[600px] flex flex-col justify-center items-center">

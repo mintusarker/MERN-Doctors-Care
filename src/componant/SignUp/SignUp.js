@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
@@ -11,6 +11,7 @@ const SignUp = () => {
 
     const { createUser, googleLogin, updateUser } = useContext(AuthContext)
     const provider = new GoogleAuthProvider();
+    const navigate = useNavigate()
 
 
     const handleSignUp = (data) => {
@@ -29,6 +30,7 @@ const SignUp = () => {
 
                 updateUserHandle(data)
                 toast.success(`User create successfully`);
+                navigate('/')
                 reset();
             })
             .catch(err => {

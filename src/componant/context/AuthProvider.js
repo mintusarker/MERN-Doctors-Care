@@ -11,10 +11,12 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     };
 
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     };
 
@@ -23,12 +25,13 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth)
     }
-   
 
-    const updateUser = (userInfo) =>{
-          return updateProfile(auth.currentUser, userInfo)
+
+    const updateUser = (userInfo) => {
+        return updateProfile(auth.currentUser, userInfo)
     }
 
 
@@ -36,6 +39,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('user observing');
             setUser(currentUser);
+            setLoading(false)
         });
         return (() => unsubscribe())
     }, [])
@@ -46,6 +50,7 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         logOut,
         updateUser,
+        loading,
         user,
     }
 
