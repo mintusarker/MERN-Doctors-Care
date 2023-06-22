@@ -7,21 +7,43 @@ import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
 
-    const { createUser, googleLogin } = useContext(AuthContext)
+    const { createUser, googleLogin, updateUser } = useContext(AuthContext)
     const provider = new GoogleAuthProvider();
 
 
     const handleSignUp = (data) => {
         console.log(data);
+        setError('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                // const userInfo = {
+                //     displayName: data.name
+                // }
+                // updateUser(userInfo)
+                //     .then(() => { })
+                //     .catch(err => console.log(err))
+
+                updateUserHandle(data)
                 toast.success(`User create successfully`);
                 reset();
             })
+            .catch(err => {
+                console.log(err.message)
+                setError(err.message)
+            })
+    }
+
+
+    const updateUserHandle = (data) => {
+        const userInfo = {
+            displayName: data.name
+        }
+        updateUser(userInfo)
+            .then(() => { })
             .catch(err => console.log(err))
     }
 
@@ -62,11 +84,13 @@ const SignUp = () => {
                     })} />
                     {errors.password && <p className='text-red-600' role="alert">{errors.password?.message}</p>}
 
+                    {error && <p className='text-red-600'>{error}</p>}
                     <input className='btn btn-accent my-4 w-full' value='Sign up' type="submit" />
-                    <p className='font-semibold text-center'>Already have an account!<Link to='/login' className='text-secondary border-b-2 ml-6 border-green-500'>Please Login</Link> </p>
-                    <div className="divider">OR</div>
-                    <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                 </form>
+
+                <p className='font-semibold text-center'>Already have an account!<Link to='/login' className='text-secondary border-b-2 ml-6 border-green-500'>Please Login</Link> </p>
+                <div className="divider">OR</div>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

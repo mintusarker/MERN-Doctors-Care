@@ -4,6 +4,7 @@ import Home from "../home/Home";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import Appointment from "../Appointment/Appoinment/Appointment";
+import Dashboard from "../Dashboard/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
                 element: <Appointment></Appointment>
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>
     }
 ])
 
