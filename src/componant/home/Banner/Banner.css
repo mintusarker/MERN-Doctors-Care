@@ -1,0 +1,17 @@
+/* .banner-banner {
+    background: linear-gradient(rgba(164, 39, 39, 0.6), rgba(224, 91, 91, 0.6)), url('../../assets//images/docto\,banner.jpg') no-repeat;
+    color: rgb(241, 231, 231);
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+
+
+.banner-banner {
+    background: linear-gradient(rgba(42, 21, 21, 0.6), rgba(126, 60, 60, 0.6)), url('../../../assets/images/docto\,banner.jpg') no-repeat;
+    color: rgb(241, 231, 231);
+    padding-top: 80px;
+    padding-bottom: 40px;
+    height: 450px;
+    background-size: cover;
+    opacity: 0px;
+}
