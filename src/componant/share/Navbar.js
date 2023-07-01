@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthProvider';
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { IoIosTimer } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";
+import { BiPlusMedical } from "react-icons/bi";
 
 
 
@@ -27,7 +28,7 @@ const Navbar = () => {
         {user?.uid ?
             <>
                 <li onClick={handleLogout}><Link>Logout</Link></li>
-            </>
+            </>  
 
             :
 
@@ -67,8 +68,8 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-
-                    <p className="font-semibold text-xl uppercase">Hello Doctor's</p>
+                    <BiPlusMedical className='text-red-500 text-xl md:text-3xl lg:text-3xl mr-2'></BiPlusMedical>
+                    <p className="font-semibold text-xl uppercase">Doctors Care</p>
                 </div>
                 <div className="navbar-center hidden md:flex lg:flex">
                     <ul className="menu menu-horizontal px-1 font-semibold text-base capitalize">
