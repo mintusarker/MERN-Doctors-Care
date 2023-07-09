@@ -17,7 +17,7 @@ const Banner = () => {
         // </div>
         <div className='pb-12'>
             <div className='banner-banner flex justify-center items-center'>
-                <div className='text-center bg-slate-400 p-8 bg-opacity-30 rounded-md'>
+                <div className='text-center bg-slate-700 p-8 bg-opacity-30 rounded'>
                 <h2 className='text-3xl mb-3 leading-8'>CARING FOR LIFE</h2>
                 <p>Leading the way in Medical Excellence</p>
                 </div>

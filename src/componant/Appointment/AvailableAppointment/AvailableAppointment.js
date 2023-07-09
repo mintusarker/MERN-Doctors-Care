@@ -2,15 +2,22 @@ import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import AppointmentOption from './AppointmentOption';
 import Modal from '../Modal/Modal';
+import { useQuery } from 'react-query';
 
 
 const AvailableAppointment = ({ selectedDate }) => {
-
-    const [appointmentOptions, setAppointmentOptions] = useState([])
-    const [treatment, setTreatment] = useState(null)
-
     const [showModal, setShowModal] = useState(false)
     const [activeId, setActiveId] = useState(null)
+
+
+    const { data: appointmentOptions = [] } = useQuery({
+        queryKey: ['appointmentOptions'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/appointmentOptions');
+            const data = res.json();
+            return data;
+        }
+    })
 
 
     const showModalHandle = (id) => {
@@ -18,23 +25,15 @@ const AvailableAppointment = ({ selectedDate }) => {
         setActiveId(id)
     }
 
-
-    useEffect(() => {
-        fetch('AppointmentOption.json')
-            .then(res => res.json())
-            .then(data => setAppointmentOptions(data))
-    }, [])
-
     return (
         <div>
-            <p className='text-center text-success text-lg font-semibold'>Available Appointments on {format(selectedDate, 'PP')}</p>
+            <p className='text-center text-green-500 text-lg font-semibold'>Available Appointments on <span className='text-white bg-gray-500 px-5 rounded-md'>{format(selectedDate, 'PP')}</span></p>
 
-            <div className='gap-6 my-10 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6'>
+            <div className='gap-5 my-10 px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-6'>
                 {
                     appointmentOptions?.map(option => <AppointmentOption
                         key={option._id}
                         appointmentOption={option}
-                        setTreatment={setTreatment}
                         showModalHandle={showModalHandle}
                     ></AppointmentOption>)
                 }

@@ -8,7 +8,7 @@ const Appointment = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     return (
-        <div>
+        <div className='lg:flex flex-row justify-center items-center my-7 pb-12'>
             <AppointmentBanner
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}

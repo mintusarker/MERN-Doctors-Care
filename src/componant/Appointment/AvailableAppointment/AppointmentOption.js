@@ -4,7 +4,7 @@ const AppointmentOption = ({ appointmentOption, showModalHandle }) => {
     const { name, slots, price, _id } = appointmentOption;
     // console.log(slots[0]);
     return (
-        <div className="card shadow-xl">
+        <div className=" shadow-xl">
             <div className="card-body text-center">
                 <h2 className="text-2xl text-success font-bold">{name}</h2>
                 <p>{slots.length > 0 ? slots[0] : 'Try Another Day'}</p>
@@ -16,7 +16,7 @@ const AppointmentOption = ({ appointmentOption, showModalHandle }) => {
                         // htmlFor="booking-modal"
                         // onClick={() => window.booking_modal.showModal(_id)}
                         onClick={() => showModalHandle(_id)}
-                        className="btn btn-success text-white">
+                        className="btn bg-green-600 hover:bg-green-900 btn-sm text-white">
                         Take Appointment</label>
                     {/* <button className="btn" onClick={() => window.booking_modal.showModal()}>open modal</button> */}
 
