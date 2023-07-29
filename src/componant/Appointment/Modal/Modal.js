@@ -3,8 +3,7 @@ import { format } from 'date-fns';
 import { AuthContext } from '../../context/AuthProvider';
 import { toast } from 'react-hot-toast';
 
-const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate }) => {
-
+const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate, refetch }) => {
     const date = format(selectedDate, 'PP');
     const appointmentOption = appointmentOptions.find(opi => opi._id === activeId)
     const { name, price, slots, _id } = appointmentOption
@@ -29,9 +28,9 @@ const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate }) => 
             price: appointmentOption?.price
         };
 
-        console.log(booking);
+        // console.log(booking);
         fetch('http://localhost:5000/bookings', {
-            method: 'POSt',
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
@@ -40,8 +39,14 @@ const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate }) => 
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                toast.success('Booking successfully done')
-                setShowModal(false)
+                if (data.acknowledged) {
+                    toast.success('Booking successfully done')
+                    setShowModal(false)
+                    refetch()
+                }
+                else{
+                    toast.error(data.text)
+                }
             })
     }
 

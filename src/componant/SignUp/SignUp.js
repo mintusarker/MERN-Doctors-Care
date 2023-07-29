@@ -30,7 +30,6 @@ const SignUp = () => {
 
                 updateUserHandle(data)
                 toast.success(`User create successfully`);
-                navigate('/')
                 reset();
             })
             .catch(err => {
@@ -45,8 +44,30 @@ const SignUp = () => {
             displayName: data.name
         }
         updateUser(userInfo)
-            .then(() => { })
+            .then(() => {
+                saveUser(data)
+             })
             .catch(err => console.log(err))
+    }
+
+
+    const saveUser = (data) => {
+        const user = {
+            email: data.email,
+            name: data.name
+        }
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data=> {
+                console.log(data);
+                navigate('/')
+            })
     }
 
 
