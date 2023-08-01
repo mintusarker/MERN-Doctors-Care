@@ -39,6 +39,7 @@ const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate, refet
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                console.log(data);
                 if (data.acknowledged) {
                     toast.success('Booking successfully done')
                     setShowModal(false)

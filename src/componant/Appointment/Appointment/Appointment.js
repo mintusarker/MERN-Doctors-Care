@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import AvailableAppointment from '../AvailableAppointment/AvailableAppointment';
-import AppointmentBanner from '../Appoinment/AppointmentBanner';
+import AppointmentBanner from './AppointmentBanner';
 
 const Appointment = () => {
 
@@ -10,11 +10,11 @@ const Appointment = () => {
     return (
         <div className='lg:flex flex-row justify-center items-center my-7 pb-12'>
             <AppointmentBanner
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
             ></AppointmentBanner>
             <AvailableAppointment
-            selectedDate={selectedDate}
+                selectedDate={selectedDate}
             ></AvailableAppointment>
         </div>
     );

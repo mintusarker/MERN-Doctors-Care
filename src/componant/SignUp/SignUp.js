@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
+
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -13,6 +15,12 @@ const SignUp = () => {
     const provider = new GoogleAuthProvider();
     const navigate = useNavigate()
 
+    const [userEmail, setUserEmail] = useState('');
+    const [token] = useToken(userEmail);
+
+    if (token) {
+        navigate('/')
+    }
 
     const handleSignUp = (data) => {
         console.log(data);
@@ -45,17 +53,15 @@ const SignUp = () => {
         }
         updateUser(userInfo)
             .then(() => {
-                saveUser(data)
-             })
+                saveUser(data.name, data.email)
+            })
             .catch(err => console.log(err))
     }
 
 
-    const saveUser = (data) => {
-        const user = {
-            email: data.email,
-            name: data.name
-        }
+    const saveUser = (name, email) => {
+        const user = { name, email }
+
         fetch('http://localhost:5000/users', {
             method: "POST",
             headers: {
@@ -64,11 +70,14 @@ const SignUp = () => {
             body: JSON.stringify(user)
         })
             .then(res => res.json())
-            .then(data=> {
+            .then(data => {
+                // navigate('/')
                 console.log(data);
-                navigate('/')
+                setUserEmail(email)
             })
     }
+
+
 
 
     const handleGoogleSignIn = () => {
