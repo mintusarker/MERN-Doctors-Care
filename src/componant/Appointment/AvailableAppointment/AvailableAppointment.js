@@ -20,7 +20,7 @@ const AvailableAppointment = ({ selectedDate }) => {
     })
 
     if (isLoading) {
-        return <span className="loading loading-ring loading-lg mx-[450px]"></span>
+        return <span className="loading loading-ring loading-lg text-green-800 mx-[450px]"></span>
     }
 
     const showModalHandle = (id) => {

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-hot-toast';
 import { useQuery } from 'react-query';
-import { useLoaderData } from 'react-router-dom';
 
 const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
@@ -18,7 +17,6 @@ const AllUsers = () => {
         fetch(`http://localhost:5000/user/admin/${_id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
         })
