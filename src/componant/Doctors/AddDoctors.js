@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const AddDoctors = () => {
 
     const { handleSubmit, register, formState: { errors } } = useForm();
-    const [error, setError] = useState();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const navigate = useNavigate();
 
@@ -54,7 +53,7 @@ const AddDoctors = () => {
                         .then(data => {
                             console.log(data);
                             if (data.acknowledged) {
-                                toast.success(`${data.name} added successfully`)
+                                toast.success(`${name} added successfully`)
                                 navigate('/dashboard/manage-doctors')
                             }
                         })

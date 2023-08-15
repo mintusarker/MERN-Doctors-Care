@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate, refetch }) => {
     const date = format(selectedDate, 'PP');
     const appointmentOption = appointmentOptions.find(opi => opi._id === activeId)
-    const { name, price, slots, _id } = appointmentOption
+    const { name, price, slots } = appointmentOption;
 
     const { user } = useContext(AuthContext);
     // const {displayName, email} = user;
@@ -25,7 +25,7 @@ const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate, refet
             slot,
             email,
             phone,
-            price: appointmentOption?.price
+            price: price
         };
 
         // console.log(booking);
@@ -45,7 +45,7 @@ const Modal = ({ appointmentOptions, activeId, setShowModal, selectedDate, refet
                     setShowModal(false)
                     refetch()
                 }
-                else{
+                else {
                     toast.error(data.text)
                 }
             })

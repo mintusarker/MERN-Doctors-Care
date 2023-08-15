@@ -19,16 +19,17 @@ const MyAppointment = () => {
 
     return (
         <div>
-            <div className="text-2xl ml-3">My Appointment</div>
+            <div className="text-xl font-semibold ml-3">My Appointment: {bookings?.length}</div>
             <div className="overflow-x-auto">
                 <table className="table">
                     <thead>
-                        <tr>
+                        <tr className='text-base text-green-600'>
                             <th></th>
                             <th>Name</th>
                             <th>Treatment</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,15 @@ const MyAppointment = () => {
                             <td>{booking?.treatment}</td>
                             <td>{booking?.appointmentDate}</td>
                             <td>{booking?.slot}</td>
+                            <td>
+                                {
+                                    booking?.price && !booking?.paid && <button className='text-black btn btn-sm btn-success rounded-sm'>Pay</button>
+                                }
+
+                                {
+                                    booking?.price && bookings?.paid && <p className='text-green-600'>Paid</p>
+                                }
+                            </td>
                         </tr>)}
                     </tbody>
                 </table>
