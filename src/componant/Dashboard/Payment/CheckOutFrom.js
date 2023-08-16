@@ -1,23 +1,40 @@
-import { CardElement, useCartElement, useStripe } from '@stripe/react-stripe-js';
-import React from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import React, { useState } from 'react';
 
 const CheckOutFrom = () => {
+    const [cardError, setCardError] = useState('');
+
     const stripe = useStripe();
-    const elements = useCartElement();
+    const elements = useElements();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!stripe || !elements) {
+            return;
+        };
+
+        const card = elements.getElement(CardElement);
+
+        if (card === null) {
+            return;
+        };
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card,
+        });
+
+  
+        if (error) {
+            console.log(error);
+            setCardError(error.message)
+        } 
+        
+        // else {
+        //     console.log('[PaymentMethod]', paymentMethod);
+        // }
     };
-
-    if (!stripe || !elements) {
-        return;
-    };
-
-    const card = elements.getElement(CardElement);
-
-    if (card == null) {
-      return;
-    }
 
 
     return (
@@ -38,9 +55,12 @@ const CheckOutFrom = () => {
                     },
                 }}
             />
-            <button type="submit" disabled={!stripe}>
+            <button type="submit" className='btn btn-sm btn-success my-3' disabled={!stripe}>
                 Pay
             </button>
+           <div className='text-red-500 font-semibold text-lg'>
+           {cardError}
+           </div>
         </form>
     );
 };
