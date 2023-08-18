@@ -48,7 +48,7 @@ const MyAppointment = () => {
                                 }
 
                                 {
-                                    booking?.price &&  bookings?.paid && <p className='text-green-600'>Paid</p>
+                                    booking?.price &&  booking?.paid && <p className='text-green-600 font-semibold'>Paid</p>
                                 }
                             </td>
                         </tr>)}

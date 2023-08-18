@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 
 const CheckOutFrom = ({ booking }) => {
 
-    const { price, patient, email } = booking;
+    const { price, patient, email, _id } = booking;
     // console.log(price);
 
     const [cardError, setCardError] = useState('');
+
     const [success, setSuccess] = useState('');
     const [transactionId, setTransactionId] = useState('');
 
@@ -80,14 +81,38 @@ const CheckOutFrom = ({ booking }) => {
             return;
         };
 
+
         if (paymentIntent.status === 'succeeded') {
-            setSuccess('Congrats! your payment completed');
-            setTransactionId(paymentIntent.id)
+            console.log(card);
+
+            //   payment information store database
+            const payment = {
+                    price,
+                    transactionId: paymentIntent.id,
+                    email,
+                    bookingId : _id
+            }
+
+            // console.log(payment);
+
+            
+            fetch('http://localhost:5000/payments', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        setSuccess('Congrats! your payment completed');
+                        setTransactionId(paymentIntent.id)
+                    }
+                })
+
         };
-
-        console.log("paymentIntent", paymentIntent);
-        console.log("paymentIntent", paymentIntent.id);
-
 
     };
 
