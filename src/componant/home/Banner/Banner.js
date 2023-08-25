@@ -6,20 +6,13 @@ import { GrCheckmark } from "react-icons/gr";
 
 const Banner = () => {
     return (
-
-        // <div className='h-96 banner-banner'>
-        //     {/* <div className='banner-img'>
-        //     <img  className='img-travel' src={travel} alt="" />
-        // </div> */}
-        //     <div className='absolute top-60 flex justify-center transform -translate-y-1/2 w-full mx-auto'>
-        //         <p className='text-center font-serif text-2xl'>Anyone can traveling for leisure, business, sports, family reasons, <br />romance, shopping, or recreation purposes. But in true sense, <br /> the whole World is a classic hotspot of tourism with <br /> diverse beauty and natural wonders.</p>
-        //     </div>
-        // </div>
         <div className='pb-12'>
             <div className='banner-banner flex justify-center items-center'>
-                <div className='text-center bg-slate-700 p-8 bg-opacity-30 rounded'>
-                <h2 className='text-3xl mb-3 leading-8'>CARING FOR LIFE</h2>
-                <p>Leading the way in Medical Excellence</p>
+                <div data-aos="zoom-in"
+                    data-aos-duration="1500"
+                    className='text-center bg-slate-700 p-8 bg-opacity-50 rounded'>
+                    <h2 className='text-3xl mb-3 leading-8'>CARING FOR LIFE</h2>
+                    <p>Leading the way in Medical Excellence</p>
                 </div>
             </div>
 

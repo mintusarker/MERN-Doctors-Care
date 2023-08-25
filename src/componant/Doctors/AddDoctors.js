@@ -23,7 +23,7 @@ const AddDoctors = () => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}` // picture store imgbb
         fetch(url, {
             method: 'POST',
             body: formData
@@ -41,6 +41,7 @@ const AddDoctors = () => {
                         specialty,
                         imageUrl
                     }
+
                     fetch('http://localhost:5000/doctors', {
                         method: 'POST',
                         headers: {
@@ -67,11 +68,19 @@ const AddDoctors = () => {
             <div className='w-96 rounded-md pl-12'>
                 <form onSubmit={handleSubmit(handleAddDoctor)}>
                     <label className='label'><span className='label-text'>Name</span></label>
-                    <input type='text' name='name' className='input border border-gray-400 w-full'{...register("name", { required: 'Name is required' })} />
+                    <input
+                        type='text'
+                        name='name'
+                        className='input border border-gray-400 w-full'
+                        {...register("name", { required: 'Name is required' })} />
 
 
                     <label className='label'><span className='label-text'>Email</span></label>
-                    <input type='email' name='name' className='input border border-gray-400 w-full'{...register("email", { required: 'Email Address is required' })} />
+                    <input
+                        type='email'
+                        name='name'
+                        className='input border border-gray-400 w-full'
+                        {...register("email", { required: 'Email Address is required' })} />
 
 
                     <label className='label'><span
@@ -90,7 +99,11 @@ const AddDoctors = () => {
 
                     <label className='label'><span
                         className='label-text'>Add Picture</span></label>
-                    <input className='input px-[60px] w-full border border-gray-400 rounded-none h-[130px] pt-[50px]' type="file" name="" id="" {...register('image', { required: ('image is required') })} />
+                    <input
+                        type="file" name=""
+                        className='input px-[60px] w-full border border-gray-400 rounded-none h-[130px] pt-[50px]'
+                        {...register('image', { required: ('image is required') })} />
+
                     {errors.image && <p>{errors?.image?.message}</p>}
 
                     {/* {error && <p className='text-red-600'>{error}</p>} */}
