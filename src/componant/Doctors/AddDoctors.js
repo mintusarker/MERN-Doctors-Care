@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useQuery } from 'react-query';
@@ -67,6 +67,7 @@ const AddDoctors = () => {
             <h2 className='text-2xl capitalize p-4'>Add Doctors</h2>
             <div className='w-96 rounded-md pl-12'>
                 <form onSubmit={handleSubmit(handleAddDoctor)}>
+
                     <label className='label'><span className='label-text'>Name</span></label>
                     <input
                         type='text'
@@ -85,7 +86,6 @@ const AddDoctors = () => {
 
                     <label className='label'><span
                         className='label-text'>Specialty</span></label>
-
                     <select {...register("specialty", { required: ('specialty is required') })}
                         className="select border border-gray-400 w-full">
                         <option disabled selected className='' value="">Pic a one specialty</option>
@@ -106,7 +106,6 @@ const AddDoctors = () => {
 
                     {errors.image && <p>{errors?.image?.message}</p>}
 
-                    {/* {error && <p className='text-red-600'>{error}</p>} */}
                     <input className='btn btn-neutral my-4 w-full' value='Add Doctor' type="submit" />
                 </form>
             </div>

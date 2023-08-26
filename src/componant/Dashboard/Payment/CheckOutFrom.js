@@ -9,6 +9,9 @@ const CheckOutFrom = ({ booking }) => {
     const [cardError, setCardError] = useState('');
 
     const [success, setSuccess] = useState('');
+
+    const [processing, setProcessing] = useState(false)
+
     const [transactionId, setTransactionId] = useState('');
 
     const [clientSecret, setClientSecret] = useState("");
@@ -62,6 +65,7 @@ const CheckOutFrom = ({ booking }) => {
 
 
         setSuccess('');
+        setProcessing(true);
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -108,7 +112,8 @@ const CheckOutFrom = ({ booking }) => {
                     console.log(data);
                     if (data.insertedId) {
                         setSuccess('Congrats! your payment completed');
-                        setTransactionId(paymentIntent.id)
+                        setTransactionId(paymentIntent.id);
+                        setProcessing(false);
                     }
                 })
 
@@ -136,7 +141,7 @@ const CheckOutFrom = ({ booking }) => {
                         },
                     }}
                 />
-                <button type="submit" className='btn btn-sm btn-success my-3' disabled={!stripe || !clientSecret}>
+                <button type="submit" className='btn btn-sm btn-success my-3' disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
 

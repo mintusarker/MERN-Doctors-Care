@@ -38,7 +38,7 @@ const Navbar = () => {
 
     return (
         <div className=''>
-            <div className='lg:flex md:flex hidden justify-between font-medium py-4 px-16 bg-slate-700 text-white leading-7'>
+            <div className='lg:flex md:flex hidden justify-between font-medium py-4 px-16 bg-gradient-to-t from-blue-900 to-slate-900 text-white leading-7'>
                 <div className='flex justify-center items-center gap-8'>
                     <div className='flex justify-center items-center gap-2'>
                         <BsFillTelephoneFill className='text-lg'></BsFillTelephoneFill>
@@ -57,7 +57,7 @@ const Navbar = () => {
 
             </div>
 
-            <div className="navbar lg:pl-12  bg-base-100 justify-between">
+            <div className="navbar px-6 mx-auto bg-base-100 justify-between">
                 <div className="navbar-start">
 
                     <div className="dropdown">
@@ -68,7 +68,7 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <BiPlusMedical className='text-red-500 text-xl md:text-3xl lg:text-3xl mr-2'></BiPlusMedical>
+                    <BiPlusMedical className='text-red-500 text-2xl md:text-3xl lg:text-4xl mr-2'></BiPlusMedical>
                     <p className="font-semibold text-xl uppercase">Doctors Care</p>
                 </div>
                 <div className="navbar-center hidden md:flex lg:flex">

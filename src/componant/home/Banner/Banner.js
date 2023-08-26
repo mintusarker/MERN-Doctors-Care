@@ -1,18 +1,19 @@
 import React from 'react';
 import './Banner.css';
-import img1 from '../../../assets/images/test1.jpg';
-import img2 from '../../../assets/images/test3.jpeg';
+import img1 from '../../../assets/images/chair.png';
+import img2 from '../../../assets/images/test.jfif';
 import { GrCheckmark } from "react-icons/gr";
 
 const Banner = () => {
     return (
         <div className='pb-12'>
             <div className='banner-banner flex justify-center items-center'>
-                <div data-aos="zoom-in"
+                <div
+                    data-aos="zoom-in"
                     data-aos-duration="1500"
-                    className='text-center bg-slate-700 p-8 bg-opacity-50 rounded'>
+                    className='text-center text-white bg-slate-700 bg-opacity-40 p-8 rounded'>
                     <h2 className='text-3xl mb-3 leading-8'>CARING FOR LIFE</h2>
-                    <p>Leading the way in Medical Excellence</p>
+                    <p className='text-lg'>Leading the way in Medical Excellence</p>
                 </div>
             </div>
 

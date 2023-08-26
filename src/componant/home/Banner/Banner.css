@@ -1,15 +1,7 @@
-/* .banner-banner {
-    background: linear-gradient(rgba(164, 39, 39, 0.6), rgba(224, 91, 91, 0.6)), url('../../assets//images/docto\,banner.jpg') no-repeat;
-    color: rgb(241, 231, 231);
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
-
-
 .banner-banner {
-    background: linear-gradient(rgba(94, 93, 93, 0.6), rgba(222, 113, 113, 0.6)), url('../../../assets/images/doctor.jpg');
+    background: linear-gradient(#74e3d5, rgba(193, 167, 167, 0.6)), url('../../../assets/images/medicc.jpg');
     background-repeat: no-repeat;
-   background-position: center;
+    background-position: center;
     color: rgb(241, 231, 231);
     height: 450px;
     background-size: cover;
