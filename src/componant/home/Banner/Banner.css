@@ -1,9 +1,18 @@
 .banner-banner {
+    background: linear-gradient(#74e3d5, rgba(193, 167, 167, 0.6));
+    /* background-repeat: no-repeat; */
+   /* background-position: center; */
+    /* color: rgb(241, 231, 231); */
+    height: 450px;
+    /* background-size: cover; */
+    /* opacity: 0px; */
+}
+/* .banner-banner {
     background: linear-gradient(#74e3d5, rgba(193, 167, 167, 0.6)), url('../../../assets/images/medicc.jpg');
     background-repeat: no-repeat;
-    background-position: center;
+   background-position: center;
     color: rgb(241, 231, 231);
     height: 450px;
     background-size: cover;
     opacity: 0px;
-}
+} */

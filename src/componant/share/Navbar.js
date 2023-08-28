@@ -37,7 +37,7 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className=''>
+        <div>
             <div className='lg:flex md:flex hidden justify-between font-medium py-4 px-16 bg-gradient-to-t from-blue-900 to-slate-900 text-white leading-7'>
                 <div className='flex justify-center items-center gap-8'>
                     <div className='flex justify-center items-center gap-2'>

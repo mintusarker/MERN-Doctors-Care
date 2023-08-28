@@ -6,7 +6,7 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://hello-doctors-server.vercel.app/users');
             const data = res.json()
             return data;
         }
@@ -14,7 +14,7 @@ const AllUsers = () => {
 
 
     const handleStatusUpdated = (_id) => {
-        fetch(`http://localhost:5000/user/admin/${_id}`, {
+        fetch(`https://hello-doctors-server.vercel.app/user/admin/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const AllUsers = () => {
                 if (data.modifiedCount > 0) {
                     toast.success('Make Admin Successfully')
                     refetch()
-                } else{
+                } else {
                     toast.error(data.text)
                 }
             })
@@ -34,7 +34,7 @@ const AllUsers = () => {
 
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/user/${_id}`, {
+        fetch(`https://hello-doctors-server.vercel.app/user/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

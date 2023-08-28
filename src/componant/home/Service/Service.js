@@ -5,6 +5,7 @@ import img3 from '../../../assets/images/whitening.png';
 import img4 from '../../../assets/images/child.png';
 import img5 from '../../../assets/images/cos.png';
 import img6 from '../../../assets/images/oral1.jpg';
+import './Service.css'
 
 const Service = () => {
 
@@ -49,9 +50,9 @@ const Service = () => {
           services.map(service =>
             <div
               data-aos="zoom-in"
-              data-aos-duration="500"
+              data-aos-duration="1000"
               data-aos-easing="ease-in-out"
-              className='hero hero-content flex flex-col bg-gradient-to-tr from-green-200 to-gray-500 rounded-md p-8'>
+              className='service hero hero-content flex flex-col bg-gradient-to-tr from-green-200 to-gray-500 rounded-md p-8'>
               <img className='w-24 h-24 bg-white rounded-lg p-3' src={service?.img} alt="" />
               <h2 className='text-xl font-serif font-medium'>{service?.name}</h2>
             </div>

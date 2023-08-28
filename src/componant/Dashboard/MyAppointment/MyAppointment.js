@@ -8,7 +8,7 @@ const MyAppointment = () => {
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            const res = await fetch(`https://hello-doctors-server.vercel.app/bookings?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -44,11 +44,11 @@ const MyAppointment = () => {
                             <td>{booking?.price}</td>
                             <td>
                                 {
-                                  booking?.price && !booking?.paid && <Link to={`dashboard/payment/${booking?._id}`}><button className='text-black btn btn-sm btn-success rounded-sm'>Pay</button> </Link>
+                                    booking?.price && !booking?.paid && <Link to={`dashboard/payment/${booking?._id}`}><button className='text-black btn btn-sm btn-success rounded-sm'>Pay</button> </Link>
                                 }
 
                                 {
-                                    booking?.price &&  booking?.paid && <p className='text-green-600 font-semibold'>Paid</p>
+                                    booking?.price && booking?.paid && <p className='text-green-600 font-semibold'>Paid</p>
                                 }
                             </td>
                         </tr>)}
