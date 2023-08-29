@@ -3,7 +3,11 @@ import React from 'react';
 const Testimonial = ({ review }) => {
     const { name, img, review: userReview, location } = review;
     return (
-        <div className="card shadow-xl">
+        <div
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            data-aos-anchor-placement="top-center"
+            className="card shadow-xl">
             <div className="card-body">
                 <p><cite><q>{userReview}</q></cite></p>
                 <div className="flex items-center mt-6 gap-5">

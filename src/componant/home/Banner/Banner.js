@@ -27,35 +27,35 @@ const Banner = () => {
 
             </div>
 
-            <div className='my-16 pt-10 lg:mx-52 md:mx-52 sm:mx-12 w-auto gap-28 grid lg:grid-cols-2 md:grid-cols-1 justify-center items-center'>
-                <div className=''>
+            <div className='my-16 pt-10 lg:px-16 mx-auto lg:gap-16 gap-28 grid lg:grid-cols-2 justify-center items-center'>
+                <div className='lg:mx-auto md:mx-auto justify-center items-center'>
                     <div className='w-[400px] relative'>
                         <img className='h-[350px] rounded-md' src={img1} alt="" />
                     </div>
                     <div className='absolute translate-x-[220px] -translate-y-48'>
                         <img className='w-64 h-60 rounded-md' src={img2} alt="" />
                     </div>
-                </div>
+                </div> 
 
-                <div className='justify-center items-center '>
-                    <div className='pb-9 text-3xl text-teal-900 font-bold capitalize'>
+                <div className='mx-auto justify-center items-center lg:px-20'>
+                    <div className='pb-9 text-3xl flex justify-center items-center text-teal-900 font-bold capitalize'>
                         <i>We are committed to your health</i>
                     </div>
-                    <div className='text-lg flex justify-center items-center gap-3 pb-9'>
+                    <div className='text-lg flex justify-center items-center gap-3'>
                         <GrCheckmark></GrCheckmark>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>Ensure a universal right to health care for all ages of persons.</p>
                     </div>
-                    <div className='text-lg flex justify-center items-center gap-3 pb-9'>
+                    <div className='text-lg my-4 flex justify-center items-center gap-3'>
                         <GrCheckmark></GrCheckmark>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>24 hours our experts are ready to join with you for treatment.</p>
                     </div>
-                    <div className='flex text-lg justify-center items-center gap-3 pb-9'>
+                    <div className='flex mb-4 text-lg justify-center items-center gap-3'>
                         <GrCheckmark></GrCheckmark>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>We are committed to giving world's best medical treatment. </p>
                     </div>
-                    <div className=' text-lg flex justify-center items-center gap-3 pb-9'>
+                    <div className=' text-lg flex justify-center items-center gap-3'>
                         <GrCheckmark></GrCheckmark>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>Providing a best treatment which is our main responsibility.</p>
                     </div>
                 </div>
             </div>
