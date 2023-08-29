@@ -5,8 +5,7 @@ const Testimonial = ({ review }) => {
     return (
         <div
             data-aos="fade-left"
-            data-aos-duration="1500"
-            data-aos-anchor-placement="top-center"
+            data-aos-duration="2000"
             className="card shadow-xl">
             <div className="card-body">
                 <p><cite><q>{userReview}</q></cite></p>

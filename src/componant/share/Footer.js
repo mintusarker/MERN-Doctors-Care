@@ -8,7 +8,8 @@ const Footer = () => {
         <div className='absolute bottom-0 h-0 start-0 w-full'>
             <div style={{
                 background: `url(${footer1})`,
-                backgroundSize: 'cover'
+                backgroundSize: 'cover',
+                backgroundColor: 'black'
                 }}>
                 <footer className="footer  text-white p-10 text-base-content lg:flex md:flex sm:flex justify-around items-center">
                     <div className=''>

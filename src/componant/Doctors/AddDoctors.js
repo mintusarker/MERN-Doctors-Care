@@ -88,7 +88,7 @@ const AddDoctors = () => {
                         className='label-text'>Specialty</span></label>
                     <select {...register("specialty", { required: ('specialty is required') })}
                         className="select border border-gray-400 w-full">
-                        <option disabled selected className='' value="">Pic a one specialty</option>
+                        <option disabled selected value="">Pic a one specialty</option>
                         {
                             specialties.map(specialty => <option
                                 key={specialty._id}

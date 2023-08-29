@@ -12,7 +12,7 @@ const Poster = () => {
                     <img alt='' src={image} className="hidden md:block lg:w-1/2 rounded-lg" />
                     <div className='text-white'>
                         <h1 className="text-4xl font-bold">Make an appointment Today</h1>
-                        <p className="py-6 text-justify">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page</p>
+                        <p className="py-6 text-lg text-justify">Ask for an appointment of the doctor quickly with almost a single click. We take care of the rest. Find your doctor easily with a minimum of effort. We've kept everything organised for you. Visit the doctor, take the service based on your appointment. Get back to good health and happiness.</p>
                         <Link to='./appointment'><button className='btn bg-white border-none text-lg rounded-sm btn-md font-bold'>Appointment</button></Link>
                     </div>
                 </div>
