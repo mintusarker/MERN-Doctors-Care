@@ -1,2 +1,2 @@
-Admin email: hp@ph.com, Password: 1234A@
+Admin email: hp@ph.com, Password: 12345A@
 
