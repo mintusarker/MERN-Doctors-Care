@@ -14,7 +14,7 @@ const MyAppointment = () => {
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookings?email=${user?.email}`,
+        `https://hello-doctors-server.vercel.app/bookings?email=${user?.email}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -27,7 +27,7 @@ const MyAppointment = () => {
   });
 
   const deleteAppointment = (_id) => {
-    fetch(`http://localhost:5000/bookings/${_id}`, {
+    fetch(`https://hello-doctors-server.vercel.app/bookings/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -50,7 +50,7 @@ const MyAppointment = () => {
 
   return (
     <div>
-      <p className="text-xl font-semibold ml-10">
+      <p className="text-xl mb-3 font-semibold ml-10">
         My Appointment: {bookings?.length}
       </p>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 px-10">
@@ -68,13 +68,13 @@ const MyAppointment = () => {
                   <p>Date: {booking?.appointmentDate}</p>
                   <p>Time: {booking?.slot}</p>
                   <p>Fee: ${booking?.price}</p>
-                  <p>
-                    TransactionID:{" "}
+                  <p className="break-words">
+                    TransactionID:
                     {booking?.transactionId
                       ? booking?.transactionId
                       : "No Payment"}
                   </p>
-                  <div className="pt-5 card-actions justify-between items-center">
+                  <div className="pt-8 card-actions justify-between items-center">
                     <div>
                       {booking?.price && booking?.paid && (
                         <p className="text-green-600 font-semibold">
@@ -89,23 +89,27 @@ const MyAppointment = () => {
                         </Link>
                       )}
                     </div>
+                    <div>
+                      <div>
+                        {booking?.paid ? (
+                          <button
+                            onClick={handlePrint}
+                            className="text-rose-600"
+                          >
+                            <BsFillFileEarmarkArrowDownFill className="text-2xl" />
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => deleteAppointment(booking?._id)}
+                            className="text-black btn btn-sm btn-error rounded-sm"
+                          >
+                            Cancel
+                          </button>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex justify-end">
-                {booking?.paid ? (
-                  <button onClick={handlePrint} className="text-rose-600">
-                    <BsFillFileEarmarkArrowDownFill className="text-2xl" />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => deleteAppointment(booking?._id)}
-                    className="text-black btn btn-sm btn-success rounded-sm"
-                  >
-                    Cancel
-                  </button>
-                )}
               </div>
             </div>
           ))}

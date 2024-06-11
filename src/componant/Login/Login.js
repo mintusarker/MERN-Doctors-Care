@@ -15,8 +15,8 @@ const Login = () => {
   } = useForm();
   const [error, setError] = useState("");
 
-  const { userLogin, googleLogin } = useContext(AuthContext);
-  const provider = new GoogleAuthProvider();
+  const { userLogin } = useContext(AuthContext);
+//   const provider = new GoogleAuthProvider();
 
   const location = useLocation();
   const navigate = useNavigate();

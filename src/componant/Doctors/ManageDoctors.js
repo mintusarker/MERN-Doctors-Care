@@ -6,14 +6,16 @@ const ManageDoctors = () => {
   const { data: doctors = [], refetch } = useQuery({
     queryKey: ["doctors"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/doctors");
+      const res = await fetch(
+        "https://hello-doctors-server.vercel.app/doctors"
+      );
       const data = res.json();
       return data;
     },
   });
 
   const handleDeleteDoctor = (_id) => {
-    fetch(`http://localhost:5000/doctors/${_id}`, {
+    fetch(`https://hello-doctors-server.vercel.app/doctors/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

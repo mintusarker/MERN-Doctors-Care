@@ -17,7 +17,7 @@ const AvailableAppointment = ({ selectedDate }) => {
     queryKey: ["appointmentOptions", date],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/appointmentOptions?date=${date}`
+        `https://hello-doctors-server.vercel.app/appointmentOptions?date=${date}`
       );
       const data = res.json();
       return data;

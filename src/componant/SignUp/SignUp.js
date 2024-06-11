@@ -72,7 +72,7 @@ const SignUp = () => {
         const name = user.displayName;
         const email = user.email;
         saveUser(name, email);
-        toast.success(`User create successfully`);
+        toast.success(`User with google login successfully`);
       })
       .catch((err) => {
         console.log(err.message);
@@ -84,7 +84,7 @@ const SignUp = () => {
   // const saveUser = (name, email) => {
   //   const user = { name, email };
 
-  //   fetch("http://localhost:5000/users", {
+  //   fetch("https://hello-doctors-server.vercel.app/users", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -102,7 +102,7 @@ const SignUp = () => {
   //save user to database
   const saveUser = (name, email) => {
     const user = { name, email };
-    fetch(" http://localhost:5000/users", {
+    fetch(" https://hello-doctors-server.vercel.app/users", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -112,7 +112,6 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("save user", data);
-        // navigate('/');
         setUserEmail(email);
       });
   };
